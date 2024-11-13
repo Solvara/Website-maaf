@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permintaan Maaf</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        .letter {
+            line-height: 1.8;
+            font-size: 1.1em;
+            text-align: left;
+            margin: 30px 0;
+            opacity: 0;
+            animation: fadeIn 1s 0.5s forwards;
+        }
+
+        .highlight {
+            display: inline-block;
+            position: relative;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+        }
+
+        .action-container {
+            margin-top: 40px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s forwards;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: white;
+            color: #2c3e50;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            display: none;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .modal p {
+            margin-bottom: 20px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 999;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .letter {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="letter">
+            Aku menulis ini dengan kesadaran penuh akan kesalahan yang telah kuperbuat.
+            <br><br>
+            Aku memahami bahwa setiap tindakan membawa konsekuensi, dan aku siap 
+            bertanggung jawab atas apa yang telah terjadi. Kesalahan ini menjadi 
+            pelajaran berharga bagiku untuk menjadi pribadi yang lebih baik.
+            <br><br>
+            Aku berjanji akan berusaha memperbaiki keadaan dan membuktikan bahwa 
+            aku bisa berubah. Setiap orang berhak mendapat kesempatan kedua, dan 
+            aku berharap kamu bisa memberiku kesempatan itu.
+            <br><br>
+            Mari kita perbaiki keadaan ini bersama-sama. Aku yakin dengan komunikasi 
+            yang baik, kita bisa melewati hal ini dan menjadi lebih kuat.
+        </div>
+
+        <div class="signature">
+            Dengan tulus,<br>
+            Aku yang menyesal
+        </div>
+
+        <div class="action-container">
+            <button onclick="showResponse('accept')">Aku Memaafkan</button>
+            <button onclick="showResponse('time')">Aku Butuh Waktu</button>
+        </div>
+    </div>
+
+    <div class="modal" id="responseModal">
+        <p id="modalText"></p>
+        <button onclick="closeModal()">Tutup</button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        function showResponse(type) {
+            const modal = document.getElementById('responseModal');
+            const overlay = document.getElementById('overlay');
+            const modalText = document.getElementById('modalText');
+
+            if (type === 'accept') {
+                modalText.innerText = "Terima kasih atas ketulusanmu memberiku kesempatan kedua. Aku akan membuktikan bahwa kepercayaanmu tidak salah.";
+            } else {
+                modalText.innerText = "Aku mengerti kamu butuh waktu. Aku akan menunggu sampai kamu siap. Terima kasih atas kejujuranmu.";
+            }
+
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('responseModal');
+            const overlay = document.getElementById('overlay');
+            
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
